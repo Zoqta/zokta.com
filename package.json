@@ -1,0 +1,21 @@
+{
+  "name": "zoqta-website",
+  "version": "1.0.0",
+  "description": "Zoqta - AI-First Tools for Engineering Teams",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -p 3000 --cors",
+    "dev": "http-server -p 3000 --cors"
+  },
+  "keywords": [
+    "ai",
+    "engineering",
+    "tools",
+    "waitlist"
+  ],
+  "author": "Akash Patil",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
