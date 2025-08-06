@@ -113,3 +113,4 @@ temp/
 # Local configuration files
 config.local.js
 settings.local.json 
+.vercel
