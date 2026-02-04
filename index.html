@@ -7,16 +7,11 @@
     <meta name="description" content="Building practical, AI-first tools that solve real problems for engineering and productivity-focused teams — faster, smarter, and at scale.">
     
     <!-- Favicon -->
-    <!-- Favicon for most browsers -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/difdeg5br/image/upload/v1754455315/favicon-16x16_cmfoeb.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/difdeg5br/image/upload/v1754455316/favicon-32x32_px0ufx.png">
-    
-    <!-- Fallback for legacy browsers -->
-    <link rel="shortcut icon" href="https://res.cloudinary.com/difdeg5br/image/upload/v1754455315/favicon_vgwut3.ico" type="image/x-icon">
-    
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/difdeg5br/image/upload/v1754455316/favicon-32x32_px0ufx.png">
-    <link rel="manifest" href="/zoqtafinallogo/site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="/public/zoqtafinallogo/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/public/zoqtafinallogo/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/public/zoqtafinallogo/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/public/zoqtafinallogo/apple-touch-icon.png">
+    <link rel="manifest" href="/public/zoqtafinallogo/site.webmanifest">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -637,12 +632,18 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Zoqta. All rights reserved.</p>
+                <p>&copy; <span id="current-year"></span> Zoqta. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Set dynamic footer year
+        const yearElement = document.getElementById('current-year');
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+        
         // Mobile menu toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -695,29 +696,20 @@
                     throw new Error('Please fill in all required fields');
                 }
                 
-                // Send data directly to Supabase with optimized headers
+                // Send data to backend API (MongoDB via /api/waitlist)
                 const startTime = performance.now();
                 
                 // Add timeout for better UX
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
                 
-                const response = await fetch('https://xlbqnvkuemkackfrnsbc.supabase.co/rest/v1/waitlist', {
+                const response = await fetch('/api/waitlist', {
                     signal: controller.signal,
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsYnFudmt1ZW1rYWNrZnJuc2JjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQzODg0OTQsImV4cCI6MjA2OTk2NDQ5NH0.oXAQYvumPdhinqasDbo_90zvFlbTzMLsvpE9rwPv-_Q',
-                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhsYnFudmt1ZW1rYWNrZnJuc2JjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQzODg0OTQsImV4cCI6MjA2OTk2NDQ5NH0.oXAQYvumPdhinqasDbo_90zvFlbTzMLsvpE9rwPv-_Q',
-                        'Prefer': 'return=minimal'
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({
-                        first_name: formData.firstName,
-                        last_name: formData.lastName,
-                        email: formData.email.toLowerCase(),
-                        company: formData.company,
-                        source: 'website'
-                    })
+                    body: JSON.stringify(formData)
                 });
                 
                 clearTimeout(timeoutId);
@@ -725,15 +717,17 @@
                 const responseTime = endTime - startTime;
                 console.log(`API Response Time: ${responseTime.toFixed(2)}ms`);
                 
+                const result = await response.json().catch(() => null);
+                
                 if (response.ok) {
                     // Success! Show message immediately
-                    showSuccessMessage('Thank you for joining our waitlist! We\'ll be in touch soon.');
+                    showSuccessMessage(result?.message || 'Thank you for joining our waitlist! We\'ll be in touch soon.');
                 } else {
                     // Handle different error cases
                     if (response.status === 409) {
-                        throw new Error('Email already exists in waitlist');
+                        throw new Error(result?.error || 'Email already exists in waitlist');
                     } else {
-                        throw new Error('Failed to join waitlist. Please try again.');
+                        throw new Error(result?.error || 'Failed to join waitlist. Please try again.');
                     }
                 }
                 
