@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zoqta - AI-First Tools for Engineering Teams</title>
     <meta name="description" content="Building practical, AI-first tools that solve real problems for engineering and productivity-focused teams — faster, smarter, and at scale.">
+    <link rel="canonical" href="https://www.zoqta.com/">
+    <link rel="alternate" type="text/markdown" title="Homepage as Markdown" href="/api/markdown-home">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/public/zoqtafinallogo/favicon.ico">
@@ -664,7 +666,7 @@
             });
         });
         
-        // Enhanced form submission with direct Supabase integration
+        // Waitlist form → POST /api/waitlist (MongoDB via serverless API)
         document.querySelector('form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -802,7 +804,51 @@
             }, 5000);
         }
         
-        // API integration complete - data is now stored in Supabase database
+        // Waitlist submissions are stored via your backend API + MongoDB
+    </script>
+    <script>
+        // WebMCP (experimental): expose waitlist signup when the browser supports it
+        (function () {
+            try {
+                var mc = typeof navigator !== 'undefined' && navigator.modelContext;
+                if (!mc || typeof mc.provideContext !== 'function') return;
+                mc.provideContext({
+                    tools: [
+                        {
+                            name: 'zoqta_join_waitlist',
+                            description: 'Submit the Zoqta waitlist form with name, email, and optional company.',
+                            inputSchema: {
+                                type: 'object',
+                                properties: {
+                                    firstName: { type: 'string', description: 'First name' },
+                                    lastName: { type: 'string', description: 'Last name' },
+                                    email: { type: 'string', description: 'Email address' },
+                                    company: { type: 'string', description: 'Company (optional)' }
+                                },
+                                required: ['firstName', 'lastName', 'email']
+                            },
+                            execute: async function (input) {
+                                var res = await fetch('/api/waitlist', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                        firstName: input.firstName,
+                                        lastName: input.lastName,
+                                        email: input.email,
+                                        company: input.company || null
+                                    })
+                                });
+                                var data = await res.json().catch(function () { return null; });
+                                if (!res.ok) throw new Error((data && data.error) || 'Waitlist request failed');
+                                return data;
+                            }
+                        }
+                    ]
+                });
+            } catch (e) {
+                console.warn('WebMCP provideContext skipped:', e);
+            }
+        })();
     </script>
         <!-- Vercel Speed Insights -->
         <script type="module">

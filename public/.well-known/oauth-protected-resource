@@ -1,0 +1,6 @@
+{
+  "resource": "https://www.zoqta.com/",
+  "authorization_servers": [],
+  "scopes_supported": [],
+  "note": "No OAuth-protected resources are exposed on this static site. The waitlist endpoint accepts unauthenticated POST for signup."
+}

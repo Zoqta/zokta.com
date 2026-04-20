@@ -1,0 +1,4 @@
+{
+  "issuer": "https://www.zoqta.com/",
+  "note": "This site does not operate an OAuth 2.0 authorization server. The waitlist API is called with unauthenticated POST. This file exists so automated clients can discover that no token endpoints are offered."
+}

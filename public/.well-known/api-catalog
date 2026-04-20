@@ -1,0 +1,32 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.zoqta.com/",
+      "item": [
+        {
+          "href": "https://www.zoqta.com/api/waitlist",
+          "rel": "service-desc",
+          "type": "application/json",
+          "title": "Waitlist API (POST JSON)"
+        },
+        {
+          "href": "https://www.zoqta.com/api/markdown-home",
+          "rel": "alternate",
+          "type": "text/markdown",
+          "title": "Homepage summary as Markdown"
+        },
+        {
+          "href": "https://www.zoqta.com/",
+          "rel": "service-doc",
+          "type": "text/html",
+          "title": "Zoqta marketing site"
+        },
+        {
+          "href": "https://www.zoqta.com/api/waitlist",
+          "rel": "status",
+          "title": "Use POST success/HTTP status as health signal for waitlist pipeline"
+        }
+      ]
+    }
+  ]
+}

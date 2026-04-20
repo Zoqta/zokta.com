@@ -1,0 +1,18 @@
+{
+  "$schema": "https://spec.modelcontextprotocol.io/draft/server-card.schema.json",
+  "serverInfo": {
+    "name": "zoqta-marketing",
+    "version": "1.0.0",
+    "description": "Zoqta marketing site — waitlist and product information. No hosted MCP transport; this card is for discovery only."
+  },
+  "capabilities": {
+    "tools": false,
+    "resources": false,
+    "prompts": false
+  },
+  "transport": {
+    "type": "none",
+    "endpoint": null,
+    "note": "MCP server runtime is not deployed on this static site. Use WebMCP / HTTP APIs where available."
+  }
+}
