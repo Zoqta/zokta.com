@@ -12,8 +12,11 @@ High‑level layout:
 zokta.com/
 ├── index.html          # Main landing page (waitlist form, UI, scripts)
 ├── api/
-│   └── waitlist.js     # Serverless API (Vercel) that writes to MongoDB
-├── public/             # Public assets used by the site (favicons, logos)
+│   ├── waitlist.js     # Serverless API (Vercel) that writes to MongoDB
+│   └── markdown-home.js # Markdown representation for agents (`GET`)
+├── middleware.js       # Edge: `Accept: text/markdown` → markdown homepage on `/`
+├── markdown-home-content.js # Shared markdown body for middleware + API
+├── public/             # Served at site root (`/sitemap.xml`, `/robots.txt`, `/.well-known/*`)
 │   ├── zoqtafinallogo/
 │   └── namefinal/
 ├── backup/             # Backup logo/name assets
@@ -31,6 +34,9 @@ Key behavior:
 - `index.html` is served as a static site.
 - The waitlist form in `index.html` submits to `POST /api/waitlist`.
 - `/api/waitlist` (Node serverless function) inserts entries into MongoDB.
+- **`public/sitemap.xml`** and **`public/robots.txt`** → `/sitemap.xml`, `/robots.txt` (canonical `https://www.zoqta.com`).
+- **`/.well-known/*`** discovery files (api-catalog, agent-skills index, MCP card stub, OAuth stubs).
+- **`GET /api/markdown-home`** and **`Accept: text/markdown`** on `/` return the same markdown summary for agents.
 
 ---
 
