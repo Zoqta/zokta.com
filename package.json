@@ -2,10 +2,11 @@
   "name": "zoqta-website",
   "version": "1.0.0",
   "description": "Zoqta - AI-First Tools for Engineering Teams",
-  "main": "index.html",
+  "main": "app/page.js",
   "scripts": {
-    "start": "http-server . -p 3000 --cors",
-    "dev": "http-server . -p 3000 --cors"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "keywords": [
     "ai",
@@ -15,11 +16,12 @@
   ],
   "author": "Akash Patil",
   "license": "MIT",
-  "devDependencies": {
-    "http-server": "^14.1.1"
-  },
+  "devDependencies": {},
   "dependencies": {
     "@vercel/speed-insights": "^1.2.0",
-    "mongodb": "^6.0.0"
+    "mongodb": "^6.0.0",
+    "next": "^15.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }

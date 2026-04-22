@@ -1,0 +1,17 @@
+{
+  "$schema": "https://spec.modelcontextprotocol.io/draft/server-card.schema.json",
+  "serverInfo": {
+    "name": "zoqta-marketing",
+    "version": "1.0.0",
+    "description": "Zoqta marketing site APIs and discovery metadata."
+  },
+  "transport": {
+    "type": "https",
+    "endpoint": "https://www.zoqta.com/api"
+  },
+  "capabilities": {
+    "tools": false,
+    "resources": false,
+    "prompts": false
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "resource": "https://www.zoqta.com/",
+  "authorization_servers": [
+    "https://www.zoqta.com/"
+  ],
+  "scopes_supported": [
+    "waitlist:write"
+  ]
+}

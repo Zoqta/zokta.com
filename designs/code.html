@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Zoqta - Explore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#3adffa",
+                        "outline-variant": "#45484f",
+                        "secondary-container": "#6f00be",
+                        "on-tertiary": "#005561",
+                        "on-primary": "#002c66",
+                        "surface-container-high": "#1c2028",
+                        "tertiary-dim": "#1ad0eb",
+                        "primary-fixed": "#6e9fff",
+                        "on-secondary": "#33005b",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary-container": "#004b56",
+                        "on-secondary-fixed-variant": "#7511c3",
+                        "secondary-dim": "#9c48ea",
+                        "on-primary-container": "#002150",
+                        "secondary-fixed": "#e5c6ff",
+                        "surface-container-highest": "#22262f",
+                        "primary-container": "#6e9fff",
+                        "surface-container": "#161a21",
+                        "inverse-primary": "#005bc4",
+                        "background": "#0b0e14",
+                        "on-error-container": "#ffa8a3",
+                        "on-error": "#490006",
+                        "secondary": "#c180ff",
+                        "surface-dim": "#0b0e14",
+                        "secondary-fixed-dim": "#dbb4ff",
+                        "surface-bright": "#282c36",
+                        "on-primary-fixed": "#000000",
+                        "on-primary-fixed-variant": "#002a62",
+                        "inverse-on-surface": "#52555c",
+                        "primary": "#85adff",
+                        "error": "#ff716c",
+                        "outline": "#73757d",
+                        "on-tertiary-fixed-variant": "#005561",
+                        "surface-tint": "#85adff",
+                        "on-secondary-fixed": "#4f0089",
+                        "primary-fixed-dim": "#5391ff",
+                        "surface": "#0b0e14",
+                        "tertiary-fixed-dim": "#1ad0eb",
+                        "on-tertiary-fixed": "#00363e",
+                        "tertiary": "#7de9ff",
+                        "on-background": "#ecedf6",
+                        "tertiary-fixed": "#3adffa",
+                        "on-secondary-container": "#e9cdff",
+                        "on-surface-variant": "#a9abb3",
+                        "surface-container-low": "#10131a",
+                        "error-container": "#9f0519",
+                        "surface-variant": "#22262f",
+                        "primary-dim": "#699cff",
+                        "inverse-surface": "#f9f9ff",
+                        "on-surface": "#ecedf6",
+                        "error-dim": "#d7383b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex h-screen w-64 bg-black border-r border-slate-800/20 shadow-2xl shadow-blue-500/5 fixed left-0 top-0 flex-col pt-20 z-40">
+<div class="px-6 pb-8">
+<div class="flex items-center gap-3">
+<img alt="Zoqta Logo" class="w-10 h-10 rounded-full object-cover border border-outline-variant/30" data-alt="Abstract glowing AI core icon with sleek metallic casing on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4T3ClZibOYhsFD0nadIJL3uwmSC0UFz9JjzjCtqRHlrWRrwewmYZQVh_Q0lW8b_ARFQB1RQ_aEmOq6XTleJbNBWM8gAVkQSPJfO1gjM-OxwZJ-zrfHPdSEyD8uaA6FeuqkXKHiIjVI7AKhKvICxRaMcIHfDRl6ae3W36FebI3kDA7mqx1LWGfK-Yrr96_a96Pe1AWq82QfgXWqUO5cwb0w7MDbRkz1KQ9UR2vXoImvI59sQdCnlWprDl28KfbNNJNEMKFWhE"/>
+<div>
+<h1 class="text-lg font-bold text-slate-100">Zoqta</h1>
+<p class="text-xs text-on-surface-variant">AI Architect</p>
+</div>
+</div>
+<button class="mt-6 w-full py-2.5 rounded-xl bg-gradient-to-br from-primary to-secondary text-on-primary font-medium text-sm hover:opacity-90 transition-opacity">
+                New Project
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto bg-slate-950 py-4">
+<ul class="space-y-1">
+<!-- Active Item -->
+<li>
+<a class="flex items-center gap-3 bg-blue-500/10 text-blue-400 border-r-4 border-blue-500 px-4 py-3 text-sm font-medium Inter hover:bg-slate-900 transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+                        Explore
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 text-sm font-medium Inter hover:bg-slate-900 hover:text-slate-200 transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Generators
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 text-sm font-medium Inter hover:bg-slate-900 hover:text-slate-200 transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">bug_report</span>
+                        Debugger
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 text-sm font-medium Inter hover:bg-slate-900 hover:text-slate-200 transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+                        Deploy
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-3 text-sm font-medium Inter hover:bg-slate-900 hover:text-slate-200 transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">shelves</span>
+                        Library
+                    </a>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-slate-800/20 bg-black">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 text-xs font-medium hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                        Docs
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 text-xs font-medium hover:text-slate-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                        Support
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopNavBar & Main Content Wrapper -->
+<div class="flex-1 flex flex-col md:ml-64 relative min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-xl shadow-none font-sans antialiased tracking-tight bg-gradient-to-b from-slate-900/50 to-transparent md:w-[calc(100%-16rem)]">
+<div class="flex justify-between items-center h-16 px-6 max-w-full mx-auto">
+<!-- Mobile Brand (Hidden on Desktop) -->
+<div class="md:hidden text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-500">
+                    Zoqta
+                </div>
+<!-- Search (Left Aligned on Desktop) -->
+<div class="hidden md:flex flex-1 max-w-md relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container-highest border border-outline-variant/15 rounded-xl pl-10 pr-4 py-2 text-sm text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-1 focus:ring-tertiary focus:border-tertiary transition-all duration-300" placeholder="Search resources, commands, or documentation..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<kbd class="px-2 py-0.5 rounded text-[10px] font-mono bg-surface-container text-on-surface-variant border border-outline-variant/30">⌘</kbd>
+<kbd class="px-2 py-0.5 rounded text-[10px] font-mono bg-surface-container text-on-surface-variant border border-outline-variant/30">K</kbd>
+</div>
+</div>
+<!-- Desktop Nav Links & Actions -->
+<div class="flex items-center gap-6">
+<nav class="hidden lg:flex gap-6">
+<a class="text-slate-400 hover:text-slate-200 transition-colors text-sm font-medium hover:bg-slate-800/50 px-3 py-1.5 rounded-lg active:scale-95 duration-200" href="#">Docs</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors text-sm font-medium hover:bg-slate-800/50 px-3 py-1.5 rounded-lg active:scale-95 duration-200" href="#">Community</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors text-sm font-medium hover:bg-slate-800/50 px-3 py-1.5 rounded-lg active:scale-95 duration-200" href="#">Pricing</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="Developer Profile" class="w-8 h-8 rounded-full ml-2 object-cover border border-outline-variant/30" data-alt="Headshot of a confident software developer with dramatic studio lighting against a dark gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1dsEROYqCygfvfdMDT9yCjoh2oOEcPdbxt7s2Ooq5kffFLCgQ5GOH4qLNDLYN5jMlsIwBIJqzZUn1coXMNeFP4IpcYBiRXR9vHlVyp8OibbAA2UICo0Ya-U0Hc6CVItxENCR6H2IEl7iez7fctgBw2cBP9VyyWgcDw2sMTMXlFV21Pa7VjFe_TEnLe-BQKsgbVvcPGDrI9beJ2O02q8ssRg_hEYImsVhR6j2RGlwWz3VvXwYkUM-2k2B8cIXEmP1iWMazwn4"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto pt-24 px-6 md:px-10 pb-20 scroll-smooth">
+<div class="max-w-7xl mx-auto space-y-16">
+<!-- Hero Section -->
+<section class="relative rounded-2xl overflow-hidden bg-surface-container-high p-10 md:p-16 border border-outline-variant/10 shadow-[0_24px_48px_rgba(0,0,0,0.4)]">
+<div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&amp;w=2070&amp;auto=format&amp;fit=crop')] bg-cover bg-center mix-blend-overlay" data-alt="Abstract futuristic digital matrix grid with glowing blue and purple nodes in deep cyberspace"></div>
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<div class="relative z-10 max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-highest border border-tertiary/20 text-tertiary text-xs font-semibold tracking-wide mb-6">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse shadow-[0_0_8px_theme('colors.tertiary')]"></span>
+                            Zoqta Engine v2.4 Live
+                        </div>
+<h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-surface mb-4 leading-tight" style="letter-spacing: -0.02em;">
+                            Discover the Future of <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Engineering</span>
+</h2>
+<p class="text-lg text-on-surface-variant mb-8 max-w-xl font-body">
+                            Accelerate your development workflow with AI-driven architectural blueprints, instant deployment scripts, and semantic code generation.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-6 py-3 rounded-xl bg-gradient-to-br from-primary to-secondary text-on-primary font-bold text-sm hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(133,173,255,0.3)]">
+                                Get Started
+                            </button>
+<button class="px-6 py-3 rounded-xl bg-surface-container-highest border border-outline-variant/30 text-on-surface font-medium text-sm hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+                                Watch Demo
+                            </button>
+</div>
+</div>
+</section>
+<!-- Featured Tools (Horizontal Scroll) -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">star</span>
+                            Featured Tools
+                        </h3>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide">
+<!-- Card 1 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center bg-surface-container-low rounded-xl p-6 border border-outline-variant/15 hover:border-primary/30 transition-all group relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 mb-6">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">bug_report</span>
+</div>
+<h4 class="text-lg font-semibold text-on-surface mb-2 font-headline">Neural Debugger</h4>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Automatically trace stack traces across microservices and generate predictive patches before compilation.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Diagnostics</span>
+<button class="text-primary text-sm font-medium hover:text-primary-fixed flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Launch <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center bg-surface-container-low rounded-xl p-6 border border-outline-variant/15 hover:border-secondary/30 transition-all group relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-all"></div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 mb-6">
+<span class="material-symbols-outlined text-secondary text-2xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h4 class="text-lg font-semibold text-on-surface mb-2 font-headline">Auto-Deployer</h4>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Zero-config CI/CD pipelines. Connect your repo and let Zoqta infer infrastructure requirements instantly.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">DevOps</span>
+<button class="text-secondary text-sm font-medium hover:text-secondary-fixed flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Launch <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="min-w-[320px] md:min-w-[400px] snap-center bg-surface-container-low rounded-xl p-6 border border-outline-variant/15 hover:border-tertiary/30 transition-all group relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-tertiary/10 rounded-full blur-3xl group-hover:bg-tertiary/20 transition-all"></div>
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center border border-outline-variant/20 mb-6">
+<span class="material-symbols-outlined text-tertiary text-2xl" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<h4 class="text-lg font-semibold text-on-surface mb-2 font-headline">Code Architect</h4>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Visualize complete system architectures from natural language prompts and export as Terraform modules.</p>
+<div class="flex items-center justify-between mt-auto">
+<span class="text-xs font-medium text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Planning</span>
+<button class="text-tertiary text-sm font-medium hover:text-tertiary-fixed flex items-center gap-1 group-hover:gap-2 transition-all">
+                                    Launch <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Grid Section -->
+<section>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<h3 class="text-xl font-bold text-on-surface">All Resources</h3>
+<!-- Filter Pills -->
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-sm font-medium hover:opacity-90 transition-opacity">
+                                All
+                            </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-sm font-medium hover:bg-surface-variant transition-colors">
+                                Frontend
+                            </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-sm font-medium hover:bg-surface-variant transition-colors">
+                                Backend
+                            </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-sm font-medium hover:bg-surface-variant transition-colors">
+                                DevOps
+                            </button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-sm font-medium hover:bg-surface-variant transition-colors">
+                                Security
+                            </button>
+</div>
+</div>
+<!-- 3 Column Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Grid Card 1 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/10 hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="flex items-start justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant/20 group-hover:border-primary/30 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">api</span>
+</div>
+<span class="bg-primary/10 text-primary border border-primary/20 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">New</span>
+</div>
+<h4 class="text-base font-semibold text-on-surface mb-2">API Synthesizer</h4>
+<p class="text-sm text-on-surface-variant mb-4 line-clamp-2">Generate RESTful or GraphQL endpoints automatically from your database schema definitions.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant/10">
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">Backend</span>
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">REST</span>
+</div>
+</div>
+<!-- Grid Card 2 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/10 hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="flex items-start justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant/20 group-hover:border-secondary/30 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary transition-colors">analytics</span>
+</div>
+<span class="bg-surface-container-highest text-on-surface-variant border border-outline-variant/20 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Popular</span>
+</div>
+<h4 class="text-base font-semibold text-on-surface mb-2">Log Analyzer</h4>
+<p class="text-sm text-on-surface-variant mb-4 line-clamp-2">Ingest millions of log lines and use AI to spot anomalies, security threats, or performance bottlenecks instantly.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant/10">
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">DevOps</span>
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">Monitoring</span>
+</div>
+</div>
+<!-- Grid Card 3 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/10 hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="flex items-start justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant/20 group-hover:border-tertiary/30 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-tertiary transition-colors">security</span>
+</div>
+</div>
+<h4 class="text-base font-semibold text-on-surface mb-2">Vuln Scanner</h4>
+<p class="text-sm text-on-surface-variant mb-4 line-clamp-2">Continuous static analysis of your codebase to identify OWASP top 10 vulnerabilities before merging.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant/10">
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">Security</span>
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">CI/CD</span>
+</div>
+</div>
+<!-- Grid Card 4 -->
+<div class="bg-surface-container rounded-xl p-5 border border-outline-variant/10 hover:bg-surface-container-highest transition-colors group cursor-pointer">
+<div class="flex items-start justify-between mb-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center border border-outline-variant/20 group-hover:border-primary/30 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">database</span>
+</div>
+</div>
+<h4 class="text-base font-semibold text-on-surface mb-2">Schema Migrator</h4>
+<p class="text-sm text-on-surface-variant mb-4 line-clamp-2">Intelligently write complex SQL migrations from natural language descriptions of data model changes.</p>
+<div class="flex items-center gap-2 pt-4 border-t border-outline-variant/10">
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">Backend</span>
+<span class="text-xs text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">Data</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>
