@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agentskills.io/schemas/index/v0.2.json",
+  "skills": [
+    {
+      "name": "zoqta-waitlist-api",
+      "type": "http",
+      "description": "Submit waitlist signups via POST /api/waitlist",
+      "url": "https://www.zoqta.com/api/waitlist",
+      "digest": {
+        "sha256": "8b2b193cab72b02423365964df84f0950d5c8fb6bbe5c5963a0e5647880c41c3"
+      }
+    },
+    {
+      "name": "zoqta-markdown-home",
+      "type": "http",
+      "description": "Markdown summary of the homepage for agents",
+      "url": "https://www.zoqta.com/api/markdown-home",
+      "digest": {
+        "sha256": "f546098c304fc50dfe48ebee365249f9d4ab48565bb344bc7b493c9fa1e36d3d"
+      }
+    },
+    {
+      "name": "agent-readiness-sitemap-skill",
+      "type": "documentation",
+      "description": "Reference skill for sitemap / robots patterns",
+      "url": "https://isitagentready.com/.well-known/agent-skills/sitemap/SKILL.md",
+      "digest": {
+        "sha256": "75fee8beccbfc81de71bc2dd9c16a2ffa2bc5895dbc434734f7aae5c5d7b24e7"
+      }
+    }
+  ]
+}

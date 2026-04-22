@@ -1,0 +1,15 @@
+{
+  "issuer": "https://www.zoqta.com/",
+  "authorization_endpoint": "https://www.zoqta.com/oauth/authorize",
+  "token_endpoint": "https://www.zoqta.com/oauth/token",
+  "jwks_uri": "https://www.zoqta.com/.well-known/jwks.json",
+  "grant_types_supported": [
+    "authorization_code",
+    "client_credentials",
+    "refresh_token"
+  ],
+  "scopes_supported": [
+    "waitlist:write"
+  ],
+  "note": "Discovery metadata for agents. Public waitlist endpoint currently accepts unauthenticated POST."
+}

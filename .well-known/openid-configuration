@@ -1,0 +1,16 @@
+{
+  "issuer": "https://www.zoqta.com/",
+  "authorization_endpoint": "https://www.zoqta.com/oauth/authorize",
+  "token_endpoint": "https://www.zoqta.com/oauth/token",
+  "jwks_uri": "https://www.zoqta.com/.well-known/jwks.json",
+  "userinfo_endpoint": "https://www.zoqta.com/oauth/userinfo",
+  "response_types_supported": [
+    "code"
+  ],
+  "subject_types_supported": [
+    "public"
+  ],
+  "id_token_signing_alg_values_supported": [
+    "RS256"
+  ]
+}
