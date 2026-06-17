@@ -26,12 +26,16 @@ export function Header() {
             <img
               src="https://res.cloudinary.com/difdeg5br/image/upload/v1754455337/logo_zypdux.png"
               alt="Zoqta Logo"
+              width={42}
+              height={42}
               style={{ width: 42, height: 42 }}
             />
             <img
               src="https://res.cloudinary.com/difdeg5br/image/upload/v1754455337/name_km1rp7.png"
               alt="Zoqta"
-              style={{ height: 26 }}
+              width={120}
+              height={26}
+              style={{ height: 26, width: 'auto' }}
             />
           </div>
         </a>

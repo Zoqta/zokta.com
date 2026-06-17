@@ -1,5 +1,8 @@
 import './globals.css'
+import { Inter } from 'next/font/google'
 import { ReducedMotionSync } from '../components/ReducedMotionSync'
+
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
 
 export const metadata = {
   title: 'Zoqta - AI-First Tools for Engineering Teams',
@@ -15,7 +18,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body>
         <ReducedMotionSync />
         {children}
