@@ -1,4 +1,4 @@
-import { HeroRetroShooterPreview } from './HeroRetroShooterPreview'
+import { HeroRetroShooterPreviewLazy as HeroRetroShooterPreview } from './HeroRetroShooterPreviewLazy'
 
 const STATS = [
   ['50+', 'AI Tools Built'],

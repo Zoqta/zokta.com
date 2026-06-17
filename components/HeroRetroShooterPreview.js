@@ -37,6 +37,7 @@ export function HeroRetroShooterPreview() {
     progress: 0,
     timerLeft: Math.ceil(ROUND_MS / 1000),
   })
+  const lastHudRef = useRef({ score: -1, timerLeft: -1, state: '' })
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -47,6 +48,8 @@ export function HeroRetroShooterPreview() {
     if (!canvas) return undefined
     const ctx = canvas.getContext('2d')
     if (!ctx) return undefined
+
+    let isVisible = true
 
     const resize = () => {
       const ratio = window.devicePixelRatio || 1
@@ -110,6 +113,11 @@ export function HeroRetroShooterPreview() {
       if (!lastTickRef.current) lastTickRef.current = ts
       const dt = Math.min((ts - lastTickRef.current) / 1000, 0.033)
       lastTickRef.current = ts
+
+      if (!isVisible) {
+        frameRef.current = 0
+        return
+      }
 
       const g = gameRef.current
       const rect = canvas.getBoundingClientRect()
@@ -183,6 +191,7 @@ export function HeroRetroShooterPreview() {
       if (g.state === 'running') {
         if (g.score >= TARGET_KILLS) {
           g.state = 'won'
+          lastHudRef.current = { score: g.score, timerLeft: 0, state: 'won' }
           setHud({
             score: g.score,
             dronesLeft: 0,
@@ -194,6 +203,7 @@ export function HeroRetroShooterPreview() {
           setTimeout(resetRound, 1800)
         } else if (g.elapsedMs >= ROUND_MS) {
           g.state = 'timeout'
+          lastHudRef.current = { score: g.score, timerLeft: 0, state: 'timeout' }
           setHud({
             score: g.score,
             dronesLeft: Math.max(TARGET_KILLS - g.score, 0),
@@ -204,14 +214,19 @@ export function HeroRetroShooterPreview() {
           })
           setTimeout(resetRound, 1600)
         } else {
-          setHud({
-            score: g.score,
-            dronesLeft: Math.max(TARGET_KILLS - g.score, 0),
-            state: 'running',
-            hint: 'Clear 5 bug drones to stabilize deployment',
-            progress: g.score / TARGET_KILLS,
-            timerLeft: Math.max(Math.ceil((ROUND_MS - g.elapsedMs) / 1000), 0),
-          })
+          const newTimerLeft = Math.max(Math.ceil((ROUND_MS - g.elapsedMs) / 1000), 0)
+          const lh = lastHudRef.current
+          if (lh.state !== 'running' || lh.score !== g.score || lh.timerLeft !== newTimerLeft) {
+            lastHudRef.current = { score: g.score, timerLeft: newTimerLeft, state: 'running' }
+            setHud({
+              score: g.score,
+              dronesLeft: Math.max(TARGET_KILLS - g.score, 0),
+              state: 'running',
+              hint: 'Clear 5 bug drones to stabilize deployment',
+              progress: g.score / TARGET_KILLS,
+              timerLeft: newTimerLeft,
+            })
+          }
         }
       }
 
@@ -308,11 +323,24 @@ export function HeroRetroShooterPreview() {
       frameRef.current = requestAnimationFrame(loop)
     }
 
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting
+        if (isVisible && !frameRef.current) {
+          lastTickRef.current = 0
+          frameRef.current = requestAnimationFrame(loop)
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(canvas)
+
     frameRef.current = requestAnimationFrame(loop)
 
     return () => {
       window.removeEventListener('resize', resize)
       cancelAnimationFrame(frameRef.current)
+      observer.disconnect()
     }
   }, [])
 

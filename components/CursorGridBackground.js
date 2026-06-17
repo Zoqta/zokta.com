@@ -7,6 +7,7 @@ export function CursorGridBackground() {
 
   useEffect(() => {
     let rafId = 0
+    let running = false
     let x = window.innerWidth / 2
     let y = window.innerHeight / 2
     let tx = x
@@ -18,18 +19,26 @@ export function CursorGridBackground() {
       if (glowRef.current) {
         glowRef.current.style.transform = `translate(${x - 220}px, ${y - 220}px)`
       }
-      rafId = requestAnimationFrame(animate)
+      if (Math.abs(tx - x) > 0.5 || Math.abs(ty - y) > 0.5) {
+        rafId = requestAnimationFrame(animate)
+      } else {
+        running = false
+        rafId = 0
+      }
     }
 
     const onMove = (e) => {
       tx = e.clientX
       ty = e.clientY
+      if (!running) {
+        running = true
+        rafId = requestAnimationFrame(animate)
+      }
     }
 
     const media = window.matchMedia('(prefers-reduced-motion: reduce)')
     if (!media.matches) {
       window.addEventListener('pointermove', onMove, { passive: true })
-      rafId = requestAnimationFrame(animate)
     }
 
     return () => {
